@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Cache files
+.cache/
+*.sst
+
+# Environment files
+.env.local
+.env*.local
