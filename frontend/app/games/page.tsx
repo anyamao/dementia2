@@ -1,5 +1,5 @@
 function page() {
-  return <div></div>;
+  return <div>games here</div>;
 }
 
 export default page;
