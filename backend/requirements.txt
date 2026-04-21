@@ -5,3 +5,5 @@ pydantic[email]
 python-jose[cryptography]
 bcrypt
 python-multipart
+psycopg2-binary        # For PostgreSQL
+gunicorn   

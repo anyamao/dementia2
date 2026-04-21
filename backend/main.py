@@ -1,4 +1,10 @@
 # backend/main.py
+
+
+from dotenv import load_dotenv
+import os
+load_dotenv(".env.production")  # Or .env based on NODE_ENV
+
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Boolean
@@ -8,12 +14,16 @@ from datetime import datetime, timedelta
 from typing import Optional
 from jose import jwt, JWTError
 import bcrypt
-
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./users.db")
 # --- Database Setup ---
-DATABASE_URL = "sqlite:///./users.db"
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-fallback")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./users.db")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 
 # --- Model ---
@@ -84,7 +94,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,0 +1,18 @@
+
+> dementia@0.1.0 start /home/vika/dementia2/frontend
+> next start
+
+▲ Next.js 16.2.4
+- Local:         http://localhost:3003
+- Network:       http://31.130.135.139:3003
+✓ Ready in 201ms
+ ELIFECYCLE  Command failed.
+
+> dementia@0.1.0 start /home/vika/dementia2/frontend
+> next start
+
+▲ Next.js 16.2.4
+- Local:         http://localhost:3003
+- Network:       http://31.130.135.139:3003
+✓ Ready in 218ms
+ ELIFECYCLE  Command failed.
